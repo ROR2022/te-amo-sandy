@@ -1,0 +1,7 @@
+import Image from 'next/image'
+import { ChevronDown, Info, Play, Volume2, VolumeX } from 'lucide-react'
+import { serie } from '@/data/serie'
+
+export function HeroBanner({ onPlay, onInfo, muted, toggleMute }: { onPlay: () => void; onInfo: () => void; muted: boolean; toggleMute: () => void }) {
+  return <section className="hero" id="inicio"><Image src={serie.heroImage} alt="Pareja compartiendo un momento especial" fill priority sizes="100vw" unoptimized className="hero-image" /><div className="hero-shade" /><div className="hero-content"><div className="series-kicker"><span className="n-mark">N</span><span>S E R I E &nbsp; O R I G I N A L</span></div><h1>{serie.title1}<br className="mobile-break" /> <em>{serie.title2}</em></h1><p className="hero-tagline">{serie.tagline}</p><div className="badges"><span className="match">98% para ti</span><span>{serie.badges[2]}</span><span className="quality">HD</span><span className="badge-original">Original</span></div><p className="hero-description">{serie.synopsis}</p><div className="hero-actions"><button className="button button-light" onClick={onPlay}><Play fill="currentColor" size={19} /> Reproducir</button><button className="button button-muted" onClick={onInfo}><Info size={20} /> Más información</button></div></div><div className="hero-rating"><button onClick={toggleMute} aria-label={muted ? 'Activar sonido' : 'Silenciar'}>{muted ? <VolumeX /> : <Volume2 />}</button><span>TV-14</span></div><div className="hero-bottom"><span>Una historia que se siente como hogar.</span><ChevronDown size={18} /></div></section>
+}
